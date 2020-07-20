@@ -25,6 +25,10 @@ target/
 */logs/**
 /target/**
 
+### Maven ###
+.mvn
+.mvn/
+
 
 ### NetBeans ###
 /nbproject/private/

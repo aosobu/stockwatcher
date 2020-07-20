@@ -37,6 +37,12 @@
 			<version>1.4.187</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+
 		<!-- snowcoder dependencies -->
 		<dependency>
 			<groupId>com.snowcoder</groupId>

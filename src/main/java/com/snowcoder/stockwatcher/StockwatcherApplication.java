@@ -11,7 +11,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication(scanBasePackages = "com.snowcoder")
 public class StockwatcherApplication implements CommandLineRunner{
-	git remote add origin git@github.com:aosobu/stockwatcher.git
 
 	Logger logger = LoggerFactory.getLogger(getClass().getName());
 
