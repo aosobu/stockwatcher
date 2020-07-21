@@ -1,7 +1,6 @@
 package com.snowcoder.stockwatcher;
 
 import com.snowcoder.webcrawlerlib.util.ScrapperUtil;
-import org.jsoup.nodes.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,7 @@ public class StockwatcherApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		Document document = scrapperUtil.connect("https://www.signetng.com/?pg=news");
-		scrapperUtil.getElementsFromDocument(document, "table.table.table-striped.table-hover tr");
+//		Document document = scrapperUtil.connect("https://www.signetng.com/?pg=news");
+//		scrapperUtil.getElementsFromDocument(document, "table.table.table-striped.table-hover tr");
 	}
 }

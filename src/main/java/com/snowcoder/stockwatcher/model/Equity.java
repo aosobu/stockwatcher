@@ -1,34 +1,46 @@
 package com.snowcoder.stockwatcher.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+
+/**
+ * created by aosobu on 20/07/2020
+ */
 
 @Entity
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 public class Equity {
 
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
 
     private float priceOpen;
     private float priceClose;
+
+    @JsonInclude()
+    @Transient
     private float priceChange;
+
+    @JsonInclude()
+    @Transient
     private float percentagePriceChange;
+
     private int trades;
     private BigDecimal volume;
     private BigDecimal value;
     private BigDecimal marketCapitalization;
     private BigDecimal outstandingShares;
-    private boolean approved;
+
+    @Column(columnDefinition = "int default 0")
+    private Boolean approved;
+
     private Date created_on;
 }

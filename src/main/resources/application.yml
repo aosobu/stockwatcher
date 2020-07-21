@@ -1,2 +1,15 @@
 server:
   port : 8087
+
+spring:
+    datasource:
+          url: jdbc:sqlserver://localhost:1433;databaseName=StockWatcher
+          username: sa
+          password: Sam2019$
+          testOnBorrow: true
+          validation-query: SELECT 1
+
+    jpa:
+        hibernate.ddl-auto: update
+
+# Hibernate ddl auto (create, create-drop, validate, update)

@@ -1,22 +1,21 @@
 package com.snowcoder.stockwatcher.model;
 
 import com.sun.istack.NotNull;
-import com.sun.javafx.beans.IDProperty;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
+
+/**
+ * created by aosobu on 20/07/2020
+ */
 
 @Entity
 @Table(name="category")
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 public class Sector {
 
     @Id
@@ -25,4 +24,8 @@ public class Sector {
 
     @NotNull
     private String name;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "sector_id")
+    private Set<Equity> equities;
 }
