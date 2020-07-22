@@ -1,16 +1,14 @@
 package com.snowcoder.stockwatcher.model;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * created by aosobu on 20/07/2020
  */
-
 @Entity
 @NoArgsConstructor
 @Getter
@@ -22,25 +20,19 @@ public class Equity {
     @GeneratedValue
     private Long id;
 
-    private float priceOpen;
-    private float priceClose;
-
-    @JsonInclude()
-    @Transient
-    private float priceChange;
-
-    @JsonInclude()
-    @Transient
-    private float percentagePriceChange;
-
-    private int trades;
-    private BigDecimal volume;
-    private BigDecimal value;
-    private BigDecimal marketCapitalization;
-    private BigDecimal outstandingShares;
+    private String name;
+    private String ticker;
+    private String subSector;
 
     @Column(columnDefinition = "int default 0")
     private Boolean approved;
-
     private Date created_on;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "equity_id")
+    private Set<EquityMetrics> equitiyMetrics;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "equity_ytd_id")
+    private Set<EquityYtdMetrics> equitiyYtdMetrics;
 }

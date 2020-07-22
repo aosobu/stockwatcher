@@ -1,0 +1,25 @@
+{
+  "Agricultural": [
+    {
+      "LIVESTOCK FEEDS PLC": {
+          "ticker": "LIVESTOCK",
+          "subsector": "Livestock/Animal Specialties",
+          "approved": "false"
+      }
+    },
+    {
+      "OKOMU OIL PALM PLC": {
+        "ticker": "LIVESTOCK",
+        "subsector": "Crop Production",
+        "approved": "false"
+      }
+    },
+    {
+      "OKOMU OIL PALM PLC": {
+        "ticker": "LIVESTOCK",
+        "subsector": "Crop Production",
+        "approved": "false"
+      }
+    }
+  ]
+}

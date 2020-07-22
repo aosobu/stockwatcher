@@ -1,6 +1,6 @@
 package com.snowcoder.stockwatcher.repository;
 
-import com.snowcoder.stockwatcher.model.Sector;
+import com.snowcoder.stockwatcher.model.CashFlowStatement;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
  * created by aosobu on 22/07/2020
  */
 @Repository
-public interface SectorRepository extends JpaRepository<Sector, Long> {
+public interface CashFlowStatementRepository extends JpaRepository<CashFlowStatement, Long> {
 }

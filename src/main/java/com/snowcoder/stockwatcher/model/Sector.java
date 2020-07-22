@@ -9,7 +9,6 @@ import java.util.Set;
 /**
  * created by aosobu on 20/07/2020
  */
-
 @Entity
 @Table(name="category")
 @NoArgsConstructor
@@ -20,12 +19,12 @@ public class Sector {
 
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
 
     @NotNull
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "sector_id")
     private Set<Equity> equities;
 }
