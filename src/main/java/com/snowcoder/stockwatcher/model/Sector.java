@@ -22,6 +22,7 @@ public class Sector {
     private Long id;
 
     @NotNull
+    @Column(unique=true)
     private String name;
 
     @OneToMany(fetch = FetchType.LAZY)

@@ -25,7 +25,8 @@ public class Equity {
     private String subSector;
 
     @Column(columnDefinition = "int default 0")
-    private Boolean approved;
+    private Boolean approved = false;
+
     private Date created_on;
 
     @OneToMany(fetch = FetchType.LAZY)
