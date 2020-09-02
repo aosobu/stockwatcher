@@ -4,6 +4,7 @@ import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 /**
@@ -15,7 +16,7 @@ import java.util.Set;
 @Getter
 @Setter
 @ToString
-public class Sector {
+public class Sector implements Serializable {
 
     @Id
     @GeneratedValue
@@ -25,7 +26,9 @@ public class Sector {
     @Column(unique=true)
     private String name;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "sector_id")
+    @OneToMany(cascade = CascadeType.ALL,
+               fetch = FetchType.EAGER,
+               targetEntity = Equity.class,
+               mappedBy = "sector")
     private Set<Equity> equities;
 }

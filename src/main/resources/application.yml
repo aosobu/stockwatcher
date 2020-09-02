@@ -3,7 +3,7 @@ server:
 
 spring:
     datasource:
-          url: jdbc:sqlserver://localhost:1433;databaseName=StockWatcherClone
+          url: jdbc:sqlserver://localhost:1433;databaseName=StockWatcher
           username: sa
           password: Sam2019$
           testOnBorrow: true
@@ -11,6 +11,11 @@ spring:
 
     jpa:
         hibernate.ddl-auto: update
+
+    data:
+          jpa:
+              repositories:
+                          bootstrap-mode: deferred
 
 logging:
         level:
@@ -23,7 +28,7 @@ logging:
                                             BasicBinder: TRACE
 
 
-
+#spring.data.jpa.repositories.bootstrap-mode=deferred
 #logging.level.org.hibernate.SQL=DEBUG
 #logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
 # Hibernate ddl auto (create, create-drop, validate, update)

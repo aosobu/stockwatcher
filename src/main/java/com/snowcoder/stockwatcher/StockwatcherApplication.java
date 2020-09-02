@@ -1,18 +1,20 @@
 package com.snowcoder.stockwatcher;
 
-import com.snowcoder.stockwatcher.config.ResourceLoader;
-import com.snowcoder.stockwatcher.model.Equity;
-import com.snowcoder.stockwatcher.model.Sector;
+import com.snowcoder.stockwatcher.model.AppState;
+import com.snowcoder.stockwatcher.repository.EquityMetricsRepository;
 import com.snowcoder.stockwatcher.repository.EquityRepository;
 import com.snowcoder.stockwatcher.repository.SectorRepository;
+import com.snowcoder.stockwatcher.service.AppStateServiceImpl;
 import com.snowcoder.webcrawlerlib.util.ScrapperUtil;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.nodes.Node;
+import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.*;
@@ -29,6 +31,12 @@ public class StockwatcherApplication implements CommandLineRunner{
 	@Autowired
 	private EquityRepository equityRepository;
 
+	@Autowired
+	private EquityMetricsRepository equityMetricsRepository;
+
+	@Autowired
+    private AppStateServiceImpl appStateServiceImpl;
+
 	public static void main(String[] args) {
 		SpringApplication.run(StockwatcherApplication.class, args);
 	}
@@ -37,60 +45,43 @@ public class StockwatcherApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 
-	    // Document document = scrapperUtil.connect("http://www.nse.com.ng/market-data/trading-statistics/equities");
-		// scrapperUtil.getElementsFromDocument(document, "table.table.table-striped.table-hover tr");
+	    //Procedure to get Categories and equities on NSE site
+//		List<Node> nodes = new ArrayList<>();
+//	    Document document = scrapperUtil.connect("http://www.nse.com.ng/market-data/trading-statistics/equities");
+//		Elements elements = scrapperUtil.getElementsFromDocument(document, "#Sector");
+//		for(Element element: elements)
+//			nodes = element.childNodes();
+//
+//		for(Node n: nodes){
+//            System.out.println("count me ++");
+//			System.out.println(n);
+//		}
 
 //		Sector sector = new Sector();
-//		sector.setName("Agriculture");
-//
-//		Set<Equity> equities = new HashSet<>();
-//
-//		Equity agricOne = new Equity();
-//		agricOne.setName("OKOMU OIL PALM PLC");
-//		agricOne.setTicker("LIVESTOCK");
-//		agricOne.setSubSector("Crop Production");
-//		agricOne.setCreated_on(new Date());
-//
-//		Equity agricTwo = new Equity();
-//		agricTwo.setName("OKOMU OIL PALM PLC");
-//		agricTwo.setTicker("LIVESTOCK");
-//		agricTwo.setSubSector("Crop Production");
-//		agricTwo.setCreated_on(new Date());
-//
-//		equities.add(agricOne);
-//		equities.add(agricTwo);
-//
-//		equityRepository.save(agricOne);
-//		equityRepository.save(agricTwo);
-//
-//		sector.setEquities(equities);
+//		sector.setName("Financial");
 //		sectorRepository.save(sector);
 //
-//		Sector sectorOne = new Sector();
-//		sectorOne.setName("Finance");
+//		Optional<Sector> sectorExists = sectorRepository.findByName("Financial");
 //
-//		Set<Equity> equitiesFinance = new HashSet<>();
+//		Equity equity = new Equity();
+//		equity.setName("teamapt");
+//		equity.setTicker("TA");
+//		equity.setSubSector("finctech");
+//		if(sectorExists.isPresent()) {
+//			System.out.println(sectorExists.get().getId());
+//			equity.setSector(sectorExists.get());
+//		}
 //
-//		Equity agricThree = new Equity();
-//		agricThree.setName("Zenith Bank");
-//		agricThree.setTicker("ZENITH");
-//		agricThree.setSubSector("Banking");
-//		agricThree.setCreated_on(new Date());
+//		Equity equityOne = new Equity();
+//		equityOne.setName("teamapt");
+//		equityOne.setTicker("TA");
+//		equityOne.setSubSector("finctech");
+//		if(sectorExists.isPresent()) {
+//			System.out.println(sectorExists.get().getId());
+//			equityOne.setSector(sectorExists.get());
+//		}
 //
-//		Equity agricFour = new Equity();
-//		agricFour.setName("First Bank");
-//		agricFour.setTicker("FBN");
-//		agricFour.setSubSector("Banking");
-//		agricFour.setCreated_on(new Date());
-//
-//		equitiesFinance.add(agricThree);
-//		equitiesFinance.add(agricFour);
-//
-//		equityRepository.save(agricThree);
-//		equityRepository.save(agricFour);
-//
-//		sectorOne.setEquities(equitiesFinance);
-//		sectorRepository.save(sectorOne);
-
+//		equityRepository.save(equity);
+//		equityRepository.save(equityOne);
 	}
 }

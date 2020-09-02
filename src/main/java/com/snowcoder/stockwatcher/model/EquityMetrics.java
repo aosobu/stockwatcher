@@ -7,6 +7,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -19,11 +20,15 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
-public class EquityMetrics {
+public class EquityMetrics implements Serializable {
 
     @Id
     @GeneratedValue
     private Long id;
+
+    @JsonInclude()
+    @Transient
+    private String ticker;
 
     private float priceOpen;
     private float priceClose;
@@ -36,14 +41,20 @@ public class EquityMetrics {
     @Transient
     private float percentagePriceChange;
 
-    private int trades;
+    private BigDecimal trades;
     private BigDecimal volume;
     private BigDecimal value;
     private BigDecimal marketCapitalization;
     private BigDecimal outstandingShares;
+    private float ytd_high;
+    private float ytd_low;
 
     @Column(columnDefinition = "int default 0")
-    private Boolean approved;
+    private Boolean approved = false;
+
+    @ManyToOne
+    @JoinColumn(name = "equity_id")
+    private Equity equity;
 
     private Date created_on;
 }

@@ -1,9 +1,12 @@
 package com.snowcoder.stockwatcher.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -14,7 +17,7 @@ import java.util.Set;
 @Getter
 @Setter
 @ToString
-public class Equity {
+public class Equity implements Serializable {
 
     @Id
     @GeneratedValue
@@ -27,13 +30,12 @@ public class Equity {
     @Column(columnDefinition = "int default 0")
     private Boolean approved = false;
 
+    @ManyToOne
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
+    private Sector sector;
+
+    @OneToMany(fetch = FetchType.EAGER, targetEntity = EquityMetrics.class, mappedBy = "equity")
+    private List<EquityMetrics> equityMetrics;
+
     private Date created_on;
-
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "equity_id")
-    private Set<EquityMetrics> equitiyMetrics;
-
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "equity_ytd_id")
-    private Set<EquityYtdMetrics> equitiyYtdMetrics;
 }
