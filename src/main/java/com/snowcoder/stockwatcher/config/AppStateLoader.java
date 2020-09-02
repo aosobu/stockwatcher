@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
-import org.springframework.core.annotation.Order;
 
 import java.util.List;
 
@@ -22,13 +21,12 @@ public class AppStateLoader{
     @Bean
     public void checkAppState(){
         LOGGER.info("============ Setting up AppStateLoader =================");
-//        LOGGER.info("============ CHECKING APP STATE =================");
-//        List<AppState> appState = appStateServiceImpl.retrieveAppState();
-//        if(appState.isEmpty()) {
-//            // initiate app set up
-//            LOGGER.info("============ INITIALIZING APPs =================");
-//        }
-
+        LOGGER.info("============ CHECKING APP STATE =================");
+        List<AppState> appState = appStateServiceImpl.retrieveAppState();
+        if(appState.isEmpty()) {
+            // initiate app set up
+            LOGGER.info("============ INITIALIZING APPs =================");
+        }
     }
 
     @Autowired
