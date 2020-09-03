@@ -26,7 +26,7 @@ public class UninitializedAppStateService implements AppContextState {
     private String scrapeSite;
     private String element;
     private SectorServiceImpl sectorServiceImpl;
-    private final String REFLECTIONNAME = "name";
+    private final String REFLECTIONNAME = "names and creams";
 
     @Override
     public AppState getAppState() {
@@ -41,13 +41,12 @@ public class UninitializedAppStateService implements AppContextState {
     public boolean setUpState() {
         if(saveRetrievedSectors())
             System.out.println("// check if nse api endpoint is available");
-        // get all equity using nse endpoint
-        // return true if procedure succeeds
         return false;
     }
 
     private boolean saveRetrievedSectors(){
-        List retrievedSectors = getSectorListFromEquitySite(REFLECTIONNAME);
+        List retrievedSectors;
+        retrievedSectors = getSectorListFromEquitySite(REFLECTIONNAME);
         return !retrievedSectors.isEmpty() ? sectorServiceImpl.saveAll(retrievedSectors) : false;
     }
 
