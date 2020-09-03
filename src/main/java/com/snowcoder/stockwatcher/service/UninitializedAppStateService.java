@@ -26,7 +26,7 @@ public class UninitializedAppStateService implements AppContextState {
     private String scrapeSite;
     private String element;
     private SectorServiceImpl sectorServiceImpl;
-    private final String REFLECTIONNAME = "names and creams";
+    private final String REFLECTIONNAME = "names";
 
     @Override
     public AppState getAppState() {
