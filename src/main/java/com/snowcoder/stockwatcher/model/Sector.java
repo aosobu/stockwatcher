@@ -16,6 +16,7 @@ import java.util.Set;
 @Getter
 @Setter
 @ToString
+@EqualsAndHashCode
 public class Sector implements Serializable {
 
     @Id
@@ -31,4 +32,5 @@ public class Sector implements Serializable {
                targetEntity = Equity.class,
                mappedBy = "sector")
     private Set<Equity> equities;
+
 }
