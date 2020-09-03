@@ -17,7 +17,7 @@ public class InitializedAppStateService implements AppContextState {
     }
 
     @Override
-    public boolean setUpState(AppState appState) {
+    public boolean setUpState() {
         return true;
     }
 }

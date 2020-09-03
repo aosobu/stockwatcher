@@ -32,4 +32,12 @@ public class SectorServiceImpl implements SectorService {
     public List<Sector> getAll() {
         return sectorRepository.findAll();
     }
+
+    public Sector save(Sector sector){
+        return sectorRepository.save(sector);
+    }
+
+    public List<Sector> saveAll(List<Sector> sectors){
+        return sectorRepository.saveAll(sectors);
+    }
 }

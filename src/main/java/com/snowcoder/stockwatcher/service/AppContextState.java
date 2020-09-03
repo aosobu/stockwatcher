@@ -6,5 +6,5 @@ public interface AppContextState {
 
     AppState getAppState();
 
-    boolean setUpState(AppState appState);
+    boolean setUpState();
 }

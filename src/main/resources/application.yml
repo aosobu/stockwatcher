@@ -27,6 +27,11 @@ logging:
                                         sql:
                                             BasicBinder: TRACE
 
+nse:
+   site: "http://www.nse.com.ng/market-data/trading-statistics/equities"
+   element: "#Sector"
+
+
 
 #spring.data.jpa.repositories.bootstrap-mode=deferred
 #logging.level.org.hibernate.SQL=DEBUG
