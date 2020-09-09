@@ -1,6 +1,6 @@
 package com.snowcoder.stockwatcher.enums;
 
-public enum AppState {
+public enum AppStates {
     INITIALIZED,
     UNINITIALIZED
 }

@@ -1,0 +1,10 @@
+{
+  "appState": [
+    {
+      "databaseIsFilled" : false,
+      "isSectorTableFilled" : false,
+      "isEquityTableFIlled" : false,
+      "lastDatePullDate" : false
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 package com.snowcoder.stockwatcher.config;
 
+import com.snowcoder.stockwatcher.enums.AppStates;
 import com.snowcoder.stockwatcher.model.AppState;
 import com.snowcoder.stockwatcher.service.AppContextState;
 import com.snowcoder.stockwatcher.service.AppStateServiceImpl;
@@ -20,7 +21,7 @@ public class AppStateLoader{
 
     private AppStateServiceImpl appStateServiceImpl;
     private final Logger LOGGER = LoggerFactory.getLogger(AppStateLoader.class);
-    private Map<com.snowcoder.stockwatcher.enums.AppState, AppContextState> appStateSetUpMap;
+    private Map<AppStates, AppContextState> appStateSetUpMap;
 
 
     @Bean
@@ -28,10 +29,10 @@ public class AppStateLoader{
         LOGGER.info("============ Setting up AppStateLoader =================");
         List<AppState> appState = appStateServiceImpl.retrieveAppState();
         if(appState.isEmpty() || !appState.get(0).getDatabaseIsFilled()) {
-            appStateSetUpMap.get(com.snowcoder.stockwatcher.enums.AppState.UNINITIALIZED).setUpState();
+            appStateSetUpMap.get(AppStates.UNINITIALIZED).setUpState();
             return;
         }
-        appStateSetUpMap.get(com.snowcoder.stockwatcher.enums.AppState.INITIALIZED).setUpState();
+        appStateSetUpMap.get(AppStates.INITIALIZED).setUpState();
     }
 
     @Autowired
@@ -40,7 +41,7 @@ public class AppStateLoader{
     }
 
     @Resource
-    public void setAppStateSetUpMap(Map<com.snowcoder.stockwatcher.enums.AppState, AppContextState> appStateSetUpMap) {
+    public void setAppStateSetUpMap(Map<AppStates, AppContextState> appStateSetUpMap) {
         this.appStateSetUpMap = appStateSetUpMap;
     }
 }

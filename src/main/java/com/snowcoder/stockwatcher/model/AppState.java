@@ -18,5 +18,7 @@ public class AppState {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private Boolean databaseIsFilled;
+    private Boolean isSectorTableFilled;
+    private Boolean isEquityTableFIlled;
     private String lastDatePullDate;
 }

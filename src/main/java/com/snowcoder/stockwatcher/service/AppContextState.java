@@ -1,10 +1,10 @@
 package com.snowcoder.stockwatcher.service;
 
-import com.snowcoder.stockwatcher.enums.AppState;
+import com.snowcoder.stockwatcher.enums.AppStates;
 
 public interface AppContextState {
 
-    AppState getAppState();
+    AppStates getAppState();
 
-    boolean setUpState();
+    void setUpState();
 }

@@ -1,6 +1,6 @@
 package com.snowcoder.stockwatcher.service;
 
-import com.snowcoder.stockwatcher.enums.AppState;
+import com.snowcoder.stockwatcher.enums.AppStates;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,12 +12,12 @@ public class InitializedAppStateService implements AppContextState {
     private final Logger LOGGER = LoggerFactory.getLogger(InitializedAppStateService.class);
 
     @Override
-    public AppState getAppState() {
-        return AppState.INITIALIZED;
+    public AppStates getAppState() {
+        return AppStates.INITIALIZED;
     }
 
     @Override
-    public boolean setUpState() {
-        return true;
+    public void setUpState() {
+        return;
     }
 }
