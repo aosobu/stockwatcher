@@ -30,7 +30,6 @@ public class UninitializedAppStateService implements AppContextState {
         List<AppState> appStates = appState.retrieveAppState();
         if(appStates.isEmpty())
             return;
-
         stateAggregator.setSuccessor(sectorGenerator);
         sectorGenerator.setSuccessor(equityGenerator);
         stateAggregator.action(appStates.get(0));

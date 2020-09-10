@@ -3,7 +3,6 @@ package com.snowcoder.stockwatcher.service;
 import com.snowcoder.stockwatcher.model.AppState;
 import com.snowcoder.stockwatcher.model.Sector;
 import com.snowcoder.webcrawlerlib.util.ScrapperUtil;
-import lombok.Setter;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Node;
 import org.jsoup.select.Elements;
@@ -25,13 +24,12 @@ public class SectorGenerator extends UninitializedStateHandler {
     private String scrapeSite;
     private String element;
     private SectorServiceImpl sectorServiceImpl;
-    private final String REFLECTIONNAME = "names";
 
     @Override
     public void action(AppState appState) {
+        String REFLECTIONNAME = "names"; // move to configuration
         if(!appState.getIsSectorTableFilled()) {
-            logger.info("about to retrieve sectors");
-            List retrievedSectors;
+            List<Sector> retrievedSectors;
             retrievedSectors = getSectorListFromEquitySite(REFLECTIONNAME);
             if(!retrievedSectors.isEmpty()) {
                 sectorServiceImpl.saveAll(retrievedSectors);

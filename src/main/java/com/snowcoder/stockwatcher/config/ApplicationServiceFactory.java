@@ -14,11 +14,11 @@ import java.util.Map;
 @Configuration
 public class ApplicationServiceFactory {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(ApplicationServiceFactory.class);
+    private final Logger logger = LoggerFactory.getLogger(ApplicationServiceFactory.class);
 
     @Bean(name = "appStateSetUpMap")
     public Map<AppStates, AppContextState> appStateSetupMap(List<AppContextState> appContextStateList){
-        LOGGER.info("============ Setting up ApplicationServiceFactory =================");
+        logger.info("============ Setting up ApplicationServiceFactory =================");
         HashMap<AppStates, AppContextState> appStateSetUpMap = new HashMap<>();
         appContextStateList.forEach(acst -> appStateSetUpMap.put(acst.getAppState(), acst));
         return appStateSetUpMap;
