@@ -22,12 +22,12 @@ public class SectorGenerator extends UninitializedStateHandler {
     private final Logger logger = LoggerFactory.getLogger(SectorGenerator.class);
     private ScrapperUtil scrapperUtil;
     private String scrapeSite;
-    private String element;
+    private String sectorDomElement;
     private SectorServiceImpl sectorServiceImpl;
 
     @Override
     public void action(AppState appState) {
-        String REFLECTIONNAME = "names"; // move to configuration
+        String REFLECTIONNAME = "name"; // move to configuration
         if(!appState.getIsSectorTableFilled()) {
             List<Sector> retrievedSectors;
             retrievedSectors = getSectorListFromEquitySite(REFLECTIONNAME);
@@ -44,7 +44,7 @@ public class SectorGenerator extends UninitializedStateHandler {
 
         try {
             Document document = scrapperUtil.connect(scrapeSite);
-            Elements elements = scrapperUtil.getElementsFromDocument(document, element);
+            Elements elements = scrapperUtil.getElementsFromDocument(document, sectorDomElement);
             List<Node> nodes = scrapperUtil.getNodesFromElement(elements);
             return scrapperUtil.returnObjectsFromNodes(nodes, Sector.class, reflectionName, 0)
                     .stream()
@@ -63,8 +63,8 @@ public class SectorGenerator extends UninitializedStateHandler {
     }
 
     @Autowired
-    public void setElement(@Value("${nse.element}") String element) {
-        this.element = element;
+    public void setElement(@Value("${nse.sectorElement}") String sectorDomElement) {
+        this.sectorDomElement = sectorDomElement;
     }
 
     @Autowired

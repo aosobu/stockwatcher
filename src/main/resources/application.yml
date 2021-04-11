@@ -2,7 +2,7 @@ server:
   port : 8087
   servlet:
     encoding:
-      force-response:
+      force-response: true
 
 spring:
     datasource:
@@ -32,13 +32,6 @@ logging:
 
 nse:
    site: "http://www.nse.com.ng/market-data/trading-statistics/equities"
-   element: "#Sector"
-   api: "http://www.nse.com.ng/REST/api/statistics/equities/"
-
-
-
-#spring.data.jpa.repositories.bootstrap-mode=deferred
-#logging.level.org.hibernate.SQL=DEBUG
-#logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
-# Hibernate ddl auto (create, create-drop, validate, update)
-#http://www.nse.com.ng/REST/api/statistics/equities/?market=&sector=financial+services&orderby=&pageSize=10&pageNo=0
+   sectorElement: "#Sector"
+   equityApiBaseUrl: "http://www.nse.com.ng/REST/api/statistics/equities/"
+   equityApiParameter: "?market=&sector=sectorParameter&orderby=&pageSize=100&pageNo=0"
